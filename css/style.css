@@ -1,0 +1,50 @@
+body {
+  margin: 0px;
+}
+
+.header-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid black;
+  padding: 40px;
+  position: relative;
+}
+
+.div-timer {
+  position: absolute;
+  left: 90%;
+}
+
+.intro-section {
+  position: relative;
+  height: 60vh;
+  padding: 40px;
+  border: 2px solid red;
+}
+
+.intro-section h2 {
+  text-align: center;
+}
+
+.block-text {
+  margin-left: auto;
+  margin-right: auto;
+  width: 24em;
+  text-align: center;
+}
+
+.start-quiz-button {
+  background-color: #3a0b55;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
