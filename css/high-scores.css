@@ -1,0 +1,15 @@
+body {
+  margin: 0px;
+}
+
+.high-score-btn {
+  background-color: #3a0b55;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
