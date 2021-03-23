@@ -17,7 +17,7 @@ body {
 
 .intro-section {
   position: relative;
-  height: 60vh;
+  height: 70vh;
   padding: 40px;
   border: 2px solid red;
 }
@@ -31,6 +31,7 @@ body {
   margin-right: auto;
   width: 24em;
   text-align: center;
+  padding: 20px;
 }
 
 .start-quiz-button {
@@ -38,7 +39,7 @@ body {
   border: none;
   border-radius: 25px;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
