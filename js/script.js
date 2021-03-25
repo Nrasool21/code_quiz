@@ -3,6 +3,7 @@ const container = document.getElementById("container");
 const introSection = document.getElementById("intro-section");
 const startBtn = document.getElementById("start-button");
 
+
 let secondsLeft = 60;
 
 const setTime = function () {
@@ -17,7 +18,6 @@ const setTime = function () {
 };
 
 //setTime();
-
 
 //build quiz card
 
@@ -61,33 +61,41 @@ const questions = [
   },
 ];
 
-
-const createChoice = function (choices) {
+const createChoices = function (choices) {
+  choices.foreach(createOption);
   const createOption = function (option) {
+    const parentDiv = document.createElement("div");
     const div = document.createElement("div");
     const button = document.createElement("button");
-    button.setAttribute("data-answer", );
+    button.setAttribute("data-answer", option);
+    parentDiv.setAttribute("id", "main");
+    button.textContent = option;
+
+    div.appendChild(button);
+    parentDiv.appendChild(div);
+    console.log(div);
   };
 
-  choices.foreach(createOption);
+  return parentDiv;
 };
 
-
 const createQuestion = function (question) {
-  const questionBox = document.createElement("div");
-  questionBox.setAttribute("id", "question");
-  questionBox.setAttribute("data-answer", question.correctAnswer);
+  const questionBoxContainer = document.createElement("div");
+  questionBoxContainer.setAttribute("id", "question");
+  questionBoxContainer.setAttribute("data-answer", question.correctAnswer);
 
   const h2 = document.createElement("h2");
-  h2.setAttribute("heading");
+  h2.setAttribute("id", "heading");
   h2.textContent = question.title;
-  const choices = createChoice();
+  const choices = createChoices(question, choices);
+  questionBoxContainer.append(h2, choices);
 };
 
 const startQuiz = function () {
   //creat question div
   createQuestion(questions[0]);
   //remove intro-section div
+
   //append question div to the DOM
 };
 
