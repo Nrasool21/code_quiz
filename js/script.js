@@ -2,7 +2,7 @@ const timerEl = document.getElementById("timer");
 const container = document.getElementById("container");
 const introSection = document.getElementById("intro-section");
 const startBtn = document.getElementById("start-button");
-
+let choices; 
 
 let secondsLeft = 60;
 
@@ -61,10 +61,10 @@ const questions = [
   },
 ];
 
-const createChoices = function (choices) {
-  choices.foreach(createOption);
-  const createOption = function (option) {
-    const parentDiv = document.createElement("div");
+const createChoices = (choices) => {
+  const parentDiv = document.createElement("div");
+
+  const createOptionAppend = function (option) {
     const div = document.createElement("div");
     const button = document.createElement("button");
     button.setAttribute("data-answer", option);
@@ -76,6 +76,8 @@ const createChoices = function (choices) {
     console.log(div);
   };
 
+  choices.forEach(createOption);
+
   return parentDiv;
 };
 
@@ -85,18 +87,21 @@ const createQuestion = function (question) {
   questionBoxContainer.setAttribute("data-answer", question.correctAnswer);
 
   const h2 = document.createElement("h2");
-  h2.setAttribute("id", "heading");
   h2.textContent = question.title;
-  const choices = createChoices(question, choices);
+
+  const choices = createChoices(question.choices);
   questionBoxContainer.append(h2, choices);
+
+  return questionBoxContainer;
 };
 
 const startQuiz = function () {
   //creat question div
-  createQuestion(questions[0]);
+  const question = createQuestion(questions[0]);
   //remove intro-section div
-
+  introSection.remove();
   //append question div to the DOM
+  container.appendChild(question);
 };
 
 //This is not working
