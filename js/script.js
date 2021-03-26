@@ -17,8 +17,6 @@ const setTime = function () {
   const timerInterval = setInterval(callBack, 1000);
 };
 
-
-
 //build quiz card
 
 const questions = [
@@ -82,9 +80,8 @@ const createChoices = function (choices) {
 };
 
 const verifyChoice = function (event) {
-const target = event.target
-
-}; 
+  const target = event.target;
+};
 
 const createQuestion = function (question) {
   const questionBoxContainer = document.createElement("div");
@@ -112,6 +109,8 @@ const startQuiz = function () {
   //remove intro-section div
   container.removeChild(introSection);
 
+  questions.forEach(renderQuestion);
+
   renderQuestion(questions[index]);
   //creat question div
   const question = createQuestion(questions[0]);
@@ -120,7 +119,6 @@ const startQuiz = function () {
 
   console.log(startQuiz);
 };
-
 
 startBtn.addEventListener("click", setTime);
 startBtn.addEventListener("click", startQuiz);
