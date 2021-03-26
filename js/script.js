@@ -2,7 +2,7 @@ const timerEl = document.getElementById("timer");
 const container = document.getElementById("container");
 const introSection = document.getElementById("intro-section");
 const startBtn = document.getElementById("start-button");
-let choices; 
+let index = 0;
 
 let secondsLeft = 60;
 
@@ -17,7 +17,7 @@ const setTime = function () {
   const timerInterval = setInterval(callBack, 1000);
 };
 
-//setTime();
+
 
 //build quiz card
 
@@ -61,7 +61,7 @@ const questions = [
   },
 ];
 
-const createChoices = (choices) => {
+const createChoices = function (choices) {
   const parentDiv = document.createElement("div");
 
   const createOptionAppend = function (option) {
@@ -76,10 +76,15 @@ const createChoices = (choices) => {
     console.log(div);
   };
 
-  choices.forEach(createOption);
+  choices.forEach(createOptionAppend);
 
   return parentDiv;
 };
+
+const verifyChoice = function (event) {
+const target = event.target
+
+}; 
 
 const createQuestion = function (question) {
   const questionBoxContainer = document.createElement("div");
@@ -92,18 +97,30 @@ const createQuestion = function (question) {
   const choices = createChoices(question.choices);
   questionBoxContainer.append(h2, choices);
 
+  questionBoxContainer.addEventListener("click", verifyChoice);
+
   return questionBoxContainer;
 };
 
-const startQuiz = function () {
-  //creat question div
-  const question = createQuestion(questions[0]);
-  //remove intro-section div
-  introSection.remove();
-  //append question div to the DOM
-  container.appendChild(question);
+const renderQuestion = function () {
+  const seriesOfQuestion = createQuestion(question);
+
+  container.appendChild(seriesOfQuestion);
 };
 
-//This is not working
+const startQuiz = function () {
+  //remove intro-section div
+  introSection.remove();
+
+  renderQuestion(questions[index]);
+  //creat question div
+  const question = createQuestion(questions[0]);
+  //append question div to the DOM
+  container.appendChild(question);
+
+  console.log(startQuiz);
+};
+
+
 startBtn.addEventListener("click", setTime);
 startBtn.addEventListener("click", startQuiz);
