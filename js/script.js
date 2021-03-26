@@ -22,8 +22,8 @@ const setTime = function () {
 const questions = [
   {
     title: "Inside which HTML element do we put the JavaScript?",
-    choices: ["scripting", "scrip", "js", "javascript"],
-    correctAnswer: "scrip",
+    choices: ["scripting", "script", "js", "javascript"],
+    correctAnswer: "script",
   },
 
   {
@@ -71,7 +71,6 @@ const createChoices = function (choices) {
 
     div.appendChild(button);
     parentDiv.appendChild(div);
-    console.log(div);
   };
 
   choices.forEach(createOptionAppend);
@@ -81,6 +80,19 @@ const createChoices = function (choices) {
 
 const verifyChoice = function (event) {
   const target = event.target;
+  const currentTarget = event.currentTarget;
+
+  if (target.matches("button")) {
+    const answer = target.getAttribute("data-answer");
+    const correctAnswer = currentTarget.getAttribute("data-answer");
+
+    if (answer === correctAnswer) {
+      index += 1;
+      container.removeChild(document.getElementById("question"));
+      renderQuestion();
+    } else {
+    }
+  }
 };
 
 const createQuestion = function (question) {
@@ -99,10 +111,16 @@ const createQuestion = function (question) {
   return questionBoxContainer;
 };
 
-const renderQuestion = function (question) {
-  const seriesOfQuestion = createQuestion(question);
+const renderQuestion = function () {
+    if(index < questions.length) {
+        const seriesOfQuestion = createQuestion(questions[index]);
 
   container.appendChild(seriesOfQuestion);
+
+    } else {
+        alert("click On View High Scores")
+    }
+console.log(renderQuestion);
 };
 
 const startQuiz = function () {
@@ -111,13 +129,11 @@ const startQuiz = function () {
 
   questions.forEach(renderQuestion);
 
-  renderQuestion(questions[index]);
+  renderQuestion();
   //creat question div
   const question = createQuestion(questions[0]);
   //append question div to the DOM
   container.appendChild(question);
-
-  console.log(startQuiz);
 };
 
 startBtn.addEventListener("click", setTime);
