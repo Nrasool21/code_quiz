@@ -102,7 +102,7 @@ const createQuestion = function (question) {
   return questionBoxContainer;
 };
 
-const renderQuestion = function () {
+const renderQuestion = function (question) {
   const seriesOfQuestion = createQuestion(question);
 
   container.appendChild(seriesOfQuestion);
@@ -110,7 +110,7 @@ const renderQuestion = function () {
 
 const startQuiz = function () {
   //remove intro-section div
-  introSection.remove();
+  container.removeChild(introSection);
 
   renderQuestion(questions[index]);
   //creat question div
