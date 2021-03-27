@@ -139,9 +139,9 @@ const startQuiz = function () {
   //remove intro-section div
   container.removeChild(introSection);
 
-  questions.forEach(renderQuestion);
+  //questions.forEach(renderQuestion);
 
-  renderQuestion();
+  //renderQuestion();
   //creat question div
   const question = createQuestion(questions[0]);
   //append question div to the DOM
@@ -169,8 +169,6 @@ const createAndAppendForm = function () {
   scoresDiv.append(h3, displayScoresDiv, scoresForm);
   scoresForm.append(initialsInput, scoreBtn);
   
-  
-    //scoresDiv.append(h3, displayScoresDiv, scoresForm);
 
     scoreBtn.addEventListener("click", highScoresPage);
 
