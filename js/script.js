@@ -8,12 +8,17 @@ let secondsLeft = 60;
 
 const setTime = function () {
   const callBack = function () {
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      alert("hello there");
+    }
     if (secondsLeft > 0) {
       secondsLeft = secondsLeft - 1;
     }
 
     timerEl.textContent = secondsLeft;
   };
+
   const timerInterval = setInterval(callBack, 1000);
 };
 
@@ -112,15 +117,14 @@ const createQuestion = function (question) {
 };
 
 const renderQuestion = function () {
-    if(index < questions.length) {
-        const seriesOfQuestion = createQuestion(questions[index]);
+  if (index < questions.length) {
+    const seriesOfQuestion = createQuestion(questions[index]);
 
-  container.appendChild(seriesOfQuestion);
-
-    } else {
-        alert("click On View High Scores")
-    }
-console.log(renderQuestion);
+    container.appendChild(seriesOfQuestion);
+  } else {
+    alert("click On View High Scores");
+  }
+  console.log(renderQuestion);
 };
 
 const startQuiz = function () {
