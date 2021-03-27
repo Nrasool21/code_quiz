@@ -12,9 +12,9 @@ const setTime = function () {
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
       //remove question
-      container.remove(question);
+      container.removeChild(document.getElementById("question"));
       //append scores Form to the DOM
-      container.append(scoresDiv);
+      container.append(createAndAppendForm());
     }
 
     if (secondsLeft > 0) {
@@ -104,6 +104,7 @@ const verifyChoice = function (event) {
 
     if (answer != correctAnswer) {
       secondsLeft = secondsLeft - 10;
+
     }
   }
 };
@@ -129,10 +130,11 @@ const renderQuestion = function () {
     const seriesOfQuestion = createQuestion(questions[index]);
 
     container.appendChild(seriesOfQuestion);
+
   } else {
-    alert("click On View High Scores");
+    alert("it works");
   }
-  //console.log(renderQuestion);
+  
 };
 
 const startQuiz = function () {
