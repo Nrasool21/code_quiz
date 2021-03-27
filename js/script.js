@@ -2,6 +2,7 @@ const timerEl = document.getElementById("timer");
 const container = document.getElementById("container");
 const introSection = document.getElementById("intro-section");
 const startBtn = document.getElementById("start-button");
+
 let index = 0;
 
 let secondsLeft = 60;
@@ -13,7 +14,7 @@ const setTime = function () {
       //remove question
       container.remove(question);
       //append scores Form to the DOM
-      container.appendChild(scoresDiv);
+      container.append(scoresDiv);
     }
 
     if (secondsLeft > 0) {
@@ -131,7 +132,7 @@ const renderQuestion = function () {
   } else {
     alert("click On View High Scores");
   }
-  console.log(renderQuestion);
+  //console.log(renderQuestion);
 };
 
 const startQuiz = function () {
@@ -147,9 +148,9 @@ const startQuiz = function () {
   container.appendChild(question);
 };
 
-const createFinalScores = function () {
+const createAndAppendForm = function () {
   const scoresDiv = document.createElement("div");
-  scoresDiv.setAttribute("id", "final-scores-div");
+  scoresDiv.setAttribute("id", "form-div");
 
   const h3 = document.createElement("h3");
   h3.textContent = "All done!";
@@ -162,11 +163,24 @@ const createFinalScores = function () {
   initialsInput.setAttribute("id", "name-input");
   initialsInput.setAttribute("name", "Enter Initials:");
   initialsInput.setAttribute("type", "text");
-  const scoreBtn = document.createElement(button);
+  const scoreBtn = document.createElement("button");
   scoreBtn.setAttribute("id", "submit-score-btn");
+  
+  scoresDiv.append(h3, displayScoresDiv, scoresForm);
+  scoresForm.append(initialsInput, scoreBtn);
+  
+  
+    //scoresDiv.append(h3, displayScoresDiv, scoresForm);
+
+    scoreBtn.addEventListener("click", highScoresPage);
+
+    return scoresDiv;
+  
 };
 
-const renderScoresForm = function () {};
+const renderScoresForm = function () {
+
+};
 
 const highScoresPage = (event) => {
   event.preventDefault();
