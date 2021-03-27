@@ -2,6 +2,7 @@ const timerEl = document.getElementById("timer");
 const container = document.getElementById("container");
 const introSection = document.getElementById("intro-section");
 const startBtn = document.getElementById("start-button");
+let quizFinish = false;
 
 let index = 0;
 
@@ -10,13 +11,16 @@ let secondsLeft = 60;
 const setTime = function () {
   const callBack = function () {
     if (secondsLeft === 0) {
-      clearInterval(timerInterval);
+      quizFinish = true;
       //remove question
       container.removeChild(document.getElementById("question"));
+    }
+    if (quizFinish) {
+      clearInterval(timerInterval);
+
       //append scores Form to the DOM
       container.append(createAndAppendForm());
     }
-
     if (secondsLeft > 0) {
       secondsLeft = secondsLeft - 1;
     }
@@ -105,6 +109,9 @@ const verifyChoice = function (event) {
     if (answer != correctAnswer) {
       secondsLeft = secondsLeft - 10;
 
+      if (secondsLeft < 0) {
+        secondsLeft = 0;
+      }
     }
   }
 };
@@ -130,11 +137,9 @@ const renderQuestion = function () {
     const seriesOfQuestion = createQuestion(questions[index]);
 
     container.appendChild(seriesOfQuestion);
-
   } else {
-    alert("it works");
+    quizFinish = true;
   }
-  
 };
 
 const startQuiz = function () {
@@ -158,29 +163,28 @@ const createAndAppendForm = function () {
   h3.textContent = "All done!";
 
   const displayScoresDiv = document.createElement("div");
+  displayScoresDiv.innerHTML = secondsLeft;
   displayScoresDiv.setAttribute("id", "display-scores");
 
   const scoresForm = document.createElement("form");
+  const label = document.createElement("label");
+  label.textContent = "Enter Initials:";
   const initialsInput = document.createElement("input");
   initialsInput.setAttribute("id", "name-input");
-  initialsInput.setAttribute("name", "Enter Initials:");
   initialsInput.setAttribute("type", "text");
   const scoreBtn = document.createElement("button");
+  scoreBtn.setAttribute("type", "submit");
   scoreBtn.setAttribute("id", "submit-score-btn");
-  
+
   scoresDiv.append(h3, displayScoresDiv, scoresForm);
   scoresForm.append(initialsInput, scoreBtn);
-  
 
-    scoreBtn.addEventListener("click", highScoresPage);
+  scoreBtn.addEventListener("click", highScoresPage);
 
-    return scoresDiv;
-  
+  return scoresDiv;
 };
 
-const renderScoresForm = function () {
-
-};
+const renderScoresForm = function () {};
 
 const highScoresPage = (event) => {
   event.preventDefault();
