@@ -10,8 +10,12 @@ const setTime = function () {
   const callBack = function () {
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
-      alert("hello there");
+      //remove question
+      container.remove(question);
+      //append scores Form to the DOM
+      container.appendChild(scoresDiv);
     }
+
     if (secondsLeft > 0) {
       secondsLeft = secondsLeft - 1;
     }
@@ -95,7 +99,10 @@ const verifyChoice = function (event) {
       index += 1;
       container.removeChild(document.getElementById("question"));
       renderQuestion();
-    } else {
+    }
+
+    if (answer != correctAnswer) {
+      secondsLeft = secondsLeft - 10;
     }
   }
 };
@@ -138,6 +145,31 @@ const startQuiz = function () {
   const question = createQuestion(questions[0]);
   //append question div to the DOM
   container.appendChild(question);
+};
+
+const createFinalScores = function () {
+  const scoresDiv = document.createElement("div");
+  scoresDiv.setAttribute("id", "final-scores-div");
+
+  const h3 = document.createElement("h3");
+  h3.textContent = "All done!";
+
+  const displayScoresDiv = document.createElement("div");
+  displayScoresDiv.setAttribute("id", "display-scores");
+
+  const scoresForm = document.createElement("form");
+  const initialsInput = document.createElement("input");
+  initialsInput.setAttribute("id", "name-input");
+  initialsInput.setAttribute("name", "Enter Initials:");
+  initialsInput.setAttribute("type", "text");
+  const scoreBtn = document.createElement(button);
+  scoreBtn.setAttribute("id", "submit-score-btn");
+};
+
+const renderScoresForm = function () {};
+
+const highScoresPage = (event) => {
+  event.preventDefault();
 };
 
 startBtn.addEventListener("click", setTime);
