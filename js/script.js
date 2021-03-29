@@ -155,6 +155,7 @@ const startQuiz = function () {
   container.appendChild(question);
 };
 
+
 const createAndAppendForm = function () {
   const scoresDiv = document.createElement("div");
   scoresDiv.setAttribute("id", "form-div");
@@ -184,7 +185,6 @@ const createAndAppendForm = function () {
   return scoresDiv;
 };
 
-const renderScoresForm = function () {};
 
 const highScoresPage = (event) => {
   event.preventDefault();

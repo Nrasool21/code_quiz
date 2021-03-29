@@ -1,9 +1,10 @@
-body {
-  margin: 0px;
+body{
+margin: 0px;
+
 }
 
-.high-score-btn {
-  background-color: #3a0b55;
+.high-score-btn{
+background-color: #3a0b55;
   border: none;
   border-radius: 8px;
   color: white;
@@ -12,4 +13,14 @@ body {
   text-decoration: none;
   font-size: 14px;
   cursor: pointer;
+
+}
+
+.display-finalscore{
+
+    border: 2px solid black;
+    padding: 20px;
+    width: 40%;
+    margin: 10px 0px;
+
 }

@@ -2,24 +2,24 @@ body {
   margin: 0px;
 }
 
-.header-container {
+.container {
   display: flex;
   flex-wrap: wrap;
-  border: 2px solid black;
   padding: 40px;
   position: relative;
 }
 
-.div-timer {
+.timer {
   position: absolute;
   left: 90%;
+  color: #3a0b55; 
 }
 
 .intro-section {
   position: relative;
-  height: 70vh;
+  height: 80vh;
   padding: 40px;
-  border: 2px solid red;
+  
 }
 
 .intro-section h2 {
@@ -34,10 +34,10 @@ body {
   padding: 20px;
 }
 
-.start-quiz-button {
+.start-button {
   background-color: #3a0b55;
   border: none;
-  border-radius: 25px;
+  border-radius: 5px;
   color: white;
   padding: 10px 32px;
   text-align: center;
