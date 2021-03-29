@@ -18,7 +18,7 @@ The app should have a clean, polished, and responsive user interface.
 - Used preventDefault method for form.
 - On click of the submit button, high-scores page is rendered.
 
-## Screenshot
+## Screenshots
 
 ![quiz_main](./assets/main_page.png)
 ![quiz_question](./assets/question_page.png)
