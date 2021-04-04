@@ -2,6 +2,7 @@ const timerEl = document.getElementById("timer");
 const container = document.getElementById("container");
 const introSection = document.getElementById("intro-section");
 const startBtn = document.getElementById("start-button");
+const scoresForm = document.getElementById("formElement");
 let quizFinish = false;
 
 let index = 0;
@@ -155,6 +156,15 @@ const startQuiz = function () {
   container.appendChild(question);
 };
 
+const getScoresFromLocalStorage = () => {
+  const scores = JSON.parse(localStorage.getItem("scores"));
+
+  if (scores === null) {
+    return [];
+  } else {
+    return scores;
+  }
+};
 
 const createAndAppendForm = function () {
   const scoresDiv = document.createElement("div");
@@ -164,30 +174,47 @@ const createAndAppendForm = function () {
   h3.textContent = "All done!";
 
   const displayScoresDiv = document.createElement("div");
-  displayScoresDiv.innerHTML = secondsLeft;
+  displayScoresDiv.textContent = secondsLeft;
   displayScoresDiv.setAttribute("id", "display-scores");
 
   const scoresForm = document.createElement("form");
   const label = document.createElement("label");
   label.textContent = "Enter Initials:";
   const initialsInput = document.createElement("input");
-  initialsInput.setAttribute("id", "name-input");
+  initialsInput.setAttribute("id", "nameInput");
   initialsInput.setAttribute("type", "text");
   const scoreBtn = document.createElement("button");
+  scoreBtn.textContent = "Submit";
   scoreBtn.setAttribute("type", "submit");
   scoreBtn.setAttribute("id", "submit-score-btn");
 
   scoresDiv.append(h3, displayScoresDiv, scoresForm);
   scoresForm.append(initialsInput, scoreBtn);
 
-  scoreBtn.addEventListener("click", highScoresPage);
+  scoresForm.addEventListener("submit", onFormSubmit);
 
   return scoresDiv;
 };
 
-
-const highScoresPage = (event) => {
+const onFormSubmit = (event) => {
   event.preventDefault();
+
+  const name = document.getElementById("nameInput").value;
+  
+
+  if (name === "") {
+    alert("Enter Initials, Field Cannot Be Blank");
+  } else {
+    const newObject = {
+      score: secondsLeft,
+      name: name,
+    };
+    const resultScores = getScoresFromLocalStorage();
+
+    resultScores.push(newObject);
+
+    localStorage.setItem("scores", JSON.stringify(resultScores));
+  }
 };
 
 startBtn.addEventListener("click", setTime);
