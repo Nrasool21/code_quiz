@@ -22,10 +22,10 @@ The app should have a clean, polished, and responsive user interface.
 
 ![quiz_main](./assets/main_page.png)
 ![quiz_question](./assets/question_page.png)
-![quiz_alldone](./assets/alldone_page.png)
-![quiz_highscore](./assets/highscore_page.png)
+![quiz_alldone](./assets/Screenshot .png)
+![quiz_highscore](./assets/Screenshot_highscores_page.png)
 
 
 ## Link To Deployed Application
 
-https://github.com/Nrasool21/code_quiz
+https://nrasool21.github.io/code_quiz/
