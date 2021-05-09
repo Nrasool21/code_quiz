@@ -22,7 +22,7 @@ The app should have a clean, polished, and responsive user interface.
 
 ![quiz_main](./assets/main_page.png)
 ![quiz_question](./assets/question_page.png)
-![quiz_alldone](./assets/Screenshot .png)
+![quiz_alldone](assets/Screenshot _alldone.png)
 ![quiz_highscore](./assets/Screenshot_highscores_page.png)
 
 
